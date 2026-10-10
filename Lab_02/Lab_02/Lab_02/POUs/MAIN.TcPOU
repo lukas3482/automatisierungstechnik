@@ -11,20 +11,7 @@ END_VAR
       <ST><![CDATA[l_flankeStartbutton(CLK := IN_OUT._i_b_startButton);
 
 IF NOT IN_OUT._i_b_stopButton THEN
-	IN_OUT._o_b_valve1 := TRUE;
-	IN_OUT._o_b_valve3 := TRUE;
-	
-	IF IN_OUT._i_b_endSwitch_1 THEN
-		IN_OUT._o_b_valve1 := FALSE;
-	END_IF
-	
-	IF IN_OUT._i_b_endSwitch_3 THEN
-		IN_OUT._o_b_valve3 := FALSE;
-	END_IF
-	
-	IF IN_OUT._i_b_endSwitch_1 AND IN_OUT._i_b_endSwitch_3 THEN
-		l_b_step := 0;
-	END_IF
+	l_b_step := 100;
 END_IF
 
 CASE l_b_step OF
@@ -55,6 +42,21 @@ CASE l_b_step OF
 		IF IN_OUT._i_b_endSwitch_3 THEN
 			IN_OUT._o_b_valve4 := FALSE;
 			l_b_step := 1;
+		END_IF
+	100:
+		IN_OUT._o_b_valve1 := TRUE;
+		IN_OUT._o_b_valve3 := TRUE;
+		
+		IF IN_OUT._i_b_endSwitch_1 THEN
+			IN_OUT._o_b_valve1 := FALSE;
+		END_IF
+		
+		IF IN_OUT._i_b_endSwitch_3 THEN
+			IN_OUT._o_b_valve3 := FALSE;
+		END_IF
+		
+		IF IN_OUT._i_b_endSwitch_1 AND IN_OUT._i_b_endSwitch_3 THEN
+			l_b_step := 0;
 		END_IF
 END_CASE
 
