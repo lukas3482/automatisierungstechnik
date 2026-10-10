@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="MAIN" Id="{8b01c7f9-5b13-4e2c-b5ed-f6458a70b75b}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	l_b_step :INT;
+	l_flankeStartbutton : R_TRIG;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[l_flankeStartbutton(CLK := IN_OUT._i_b_startButton);
+
+IF NOT IN_OUT._i_b_stopButton THEN
+	IN_OUT._o_b_valve1 := TRUE;
+	IN_OUT._o_b_valve3 := TRUE;
+	
+	IF IN_OUT._i_b_endSwitch_1 THEN
+		IN_OUT._o_b_valve1 := FALSE;
+	END_IF
+	
+	IF IN_OUT._i_b_endSwitch_3 THEN
+		IN_OUT._o_b_valve3 := FALSE;
+	END_IF
+	
+	IF IN_OUT._i_b_endSwitch_1 AND IN_OUT._i_b_endSwitch_3 THEN
+		l_b_step := 0;
+	END_IF
+END_IF
+
+CASE l_b_step OF
+	0:
+		IF l_flankeStartbutton.Q AND IN_OUT._i_b_endSwitch_3 AND IN_OUT._i_b_endSwitch_1 AND IN_OUT._i_b_stopButton THEN
+			l_b_step := 1;
+		END_IF
+	1:
+		IN_OUT._o_b_valve1 := TRUE;
+		IF IN_OUT._i_b_endSwitch_2 THEN
+			IN_OUT._o_b_valve1 := FALSE;
+			l_b_step := 2;
+		END_IF
+	2: 
+		IN_OUT._o_b_valve2 := TRUE;
+		IF IN_OUT._i_b_endSwitch_1 THEN
+			IN_OUT._o_b_valve2 := FALSE;
+			l_b_step := 3;
+		END_IF
+	3:
+		IN_OUT._o_b_valve3 := TRUE;
+		IF IN_OUT._i_b_endSwitch_4 THEN
+			IN_OUT._o_b_valve3 := FALSE;
+			l_b_step := 4;
+		END_IF
+	4: 
+		IN_OUT._o_b_valve4 := TRUE;
+		IF IN_OUT._i_b_endSwitch_3 THEN
+			IN_OUT._o_b_valve4 := FALSE;
+			l_b_step := 1;
+		END_IF
+END_CASE
+
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
