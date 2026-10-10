@@ -1,5 +1,64 @@
 <?xml version="1.0"?>
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.27">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000005}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..4] OF BIT</Name>
+			<BitSize>5</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>5</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000002}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..1] OF BIT</Name>
+			<BitSize>2</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>2</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000008}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..0] OF BYTE</Name>
+			<BitSize>8</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>1</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000000A}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..9] OF BIT</Name>
+			<BitSize>10</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>10</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000001}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..0] OF BIT</Name>
+			<BitSize>1</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>1</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-00200000000E}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..13] OF BIT</Name>
+			<BitSize>14</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>14</Elements>
+			</ArrayInfo>
+		</DataType>
+	</DataTypes>
+	<ImageDatas>
+		<ImageData Id="1000">424dbe000000000000004e00000028000000100000000e000000010004000000000070000000c30e0000c30e00000600000006000000000000000000ff00ff00ff00808080000080ff0000ff000022222222222222220000000000000000030303030000011005050505000001100000000000000000000000000000000003030303000001100505050500000110000000000000000044444422222222224444442222222222444444222222222244444422222222224444442222222222</ImageData>
+	</ImageDatas>
 	<Project ProjectGUID="{7D1D3E81-51DA-477A-8A22-232C265E5F31}" TargetNetId="199.4.42.250.1.1" Target64Bit="true" ShowHideConfigurations="#x3c6">
 		<System>
 			<Tasks>
@@ -10,7 +69,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{1CD2EFE2-8961-4889-9031-3D29E544E839}" Name="Lab_02" PrjFilePath="Lab_02\Lab_02.plcproj" TmcFilePath="Lab_02\Lab_02.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{7AFA06FF-9830-1EED-F6A4-9449FACE4CDF}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{19356562-F221-0D82-9C06-60728B3FA3D4}" TmcPath="Lab_02\Lab_02.tmc">
 					<Name>Lab_02 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="2" AreaNo="1">
@@ -54,6 +113,10 @@
 							<Name>IN_OUT._i_b_startButton</Name>
 							<Type>BOOL</Type>
 						</Var>
+						<Var>
+							<Name>IN_OUT._i_b_stopButton</Name>
+							<Type>BOOL</Type>
+						</Var>
 					</Vars>
 					<Contexts>
 						<Context>
@@ -72,5 +135,199 @@
 				</Instance>
 			</Project>
 		</Plc>
+		<Io>
+			<Device Id="1" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="199.4.42.250.2.1" RemoteName="Gerät 1 (EtherCAT)" InfoImageId="2">
+				<Name>Gerät 1 (EtherCAT)</Name>
+				<AddressInfo>
+					<Pnp>
+						<DeviceDesc></DeviceDesc>
+						<DeviceName></DeviceName>
+						<DeviceData>000000000000</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<Image Id="1" AddrType="9" ImageType="3">
+					<Name>Prozessabbild</Name>
+				</Image>
+				<Box Id="1" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 1 (EPP2316-0003)</Name>
+					<ImageId>1000</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0605" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="7" FoeType="1" VendorId="#x00000002" ProductCode="#x647656c9" RevisionNo="#x00100003" InfoDataAddr="true" TimeoutMailbox2="2000" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EPP2316-0003 8 K. Dig. Ein, 10µs, 8 K. Dig. Aus 24V, 0,5A, Diagnose, 10-Pol Steckverbinder" Desc="EPP2316-0003" PortABoxInfo="#x00ffffff">
+						<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
+						<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
+						<SyncMan>001104002400010003000000000000000400001124010000</SyncMan>
+						<SyncMan>801106002000010004000000000000000600801120010000</SyncMan>
+						<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000801100010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<BootStrapData>0010f400f410f400</BootStrapData>
+						<DcMode>53796e6368726f6e0000000000000000534d2d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<DcMode>4443000000000000000000000000000044432d53796e6368726f6e0000000000000000000000000000000000000000000000000000000000580f0200000000070100000000000000000000000000000000000000000000000000000000000000</DcMode>
+						<Pdo Name="DIG Inputs" Index="#x1a00" Flags="#x0010" SyncMan="3">
+							<Entry Name="Input 1" Index="#x6000" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Input 2" Index="#x6000" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Input 3" Index="#x6000" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Input 4" Index="#x6000" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Input 5" Index="#x6000" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Input 6" Index="#x6000" Sub="#x06">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Input 7" Index="#x6000" Sub="#x07">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Input 8" Index="#x6000" Sub="#x08">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Gap">
+								<Type GUID="{18071995-0000-0000-0000-002000000005}">ARRAY [0..4] OF BIT</Type>
+							</Entry>
+							<Entry Name="Sync Error" Index="#x1c32" Sub="#x20">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Gap">
+								<Type GUID="{18071995-0000-0000-0000-002000000002}">ARRAY [0..1] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIG Diag Inputs" Index="#x1a01" Flags="#x0010" SyncMan="3">
+							<Entry Name="Diag Input 1" Index="#x6001" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Diag Input 2" Index="#x6001" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Diag Input 3" Index="#x6001" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Diag Input 4" Index="#x6001" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Diag Input 5" Index="#x6001" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Diag Input 6" Index="#x6001" Sub="#x06">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Diag Input 7" Index="#x6001" Sub="#x07">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Diag Input 8" Index="#x6001" Sub="#x08">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Gap">
+								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIG Inputs Device" Index="#x1a02" Flags="#x0011" SyncMan="3">
+							<Entry Name="Safe state active" Index="#xf600" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Error channel 1" Index="#xf600" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Error channel 2" Index="#xf600" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000000A}">ARRAY [0..9] OF BIT</Type>
+							</Entry>
+							<Entry Name="Sync error" Index="#x1c32" Sub="#x20">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
+							</Entry>
+							<Entry Name="TxPDO Toggle" Index="#x1800" Sub="#x09">
+								<Type>BIT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIG Outputs" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="Output 1" Index="#x7000" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Output 2" Index="#x7000" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Output 3" Index="#x7000" Sub="#x03">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Output 4" Index="#x7000" Sub="#x04">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Output 5" Index="#x7000" Sub="#x05">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Output 6" Index="#x7000" Sub="#x06">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Output 7" Index="#x7000" Sub="#x07">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Output 8" Index="#x7000" Sub="#x08">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DIG Outputs Device" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="Set safe state" Index="#xf700" Sub="#x01">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry Name="Reset outputs" Index="#xf700" Sub="#x02">
+								<Type>BIT</Type>
+							</Entry>
+							<Entry>
+								<Type GUID="{18071995-0000-0000-0000-00200000000E}">ARRAY [0..13] OF BIT</Type>
+							</Entry>
+						</Pdo>
+						<CoeProfile ProfileNo="18355081"/>
+						<EtherCATp>
+							<Device>
+								<Us DevCurrent="0.08">
+									<Load Name="Sensor Supply"/>
+								</Us>
+								<Up>
+									<Load Name="Actor Quiescent Supply"/>
+								</Up>
+							</Device>
+							<Port>
+								<Us Resistance="0.108"/>
+								<Up Resistance="0.108"/>
+							</Port>
+							<Port>
+								<Us Resistance="0.108"/>
+								<Up Resistance="0.108"/>
+							</Port>
+						</EtherCATp>
+					</EtherCAT>
+				</Box>
+				<EtherCAT/>
+			</Device>
+		</Io>
 	</Project>
+	<Mappings>
+		<OwnerA Name="TIPC^Lab_02^Lab_02 Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 1 (EPP2316-0003)">
+				<Link VarA="PlcTask Inputs^IN_OUT._i_b_endSwitch_1" VarB="DIG Inputs^Input 1"/>
+				<Link VarA="PlcTask Inputs^IN_OUT._i_b_endSwitch_2" VarB="DIG Inputs^Input 2"/>
+				<Link VarA="PlcTask Inputs^IN_OUT._i_b_endSwitch_3" VarB="DIG Inputs^Input 3"/>
+				<Link VarA="PlcTask Inputs^IN_OUT._i_b_endSwitch_4" VarB="DIG Inputs^Input 4"/>
+				<Link VarA="PlcTask Inputs^IN_OUT._i_b_startButton" VarB="DIG Inputs^Input 5"/>
+				<Link VarA="PlcTask Inputs^IN_OUT._i_b_stopButton" VarB="DIG Inputs^Input 6"/>
+				<Link VarA="PlcTask Outputs^IN_OUT._o_b_valve1" VarB="DIG Outputs^Output 1"/>
+				<Link VarA="PlcTask Outputs^IN_OUT._o_b_valve2" VarB="DIG Outputs^Output 2"/>
+				<Link VarA="PlcTask Outputs^IN_OUT._o_b_valve3" VarB="DIG Outputs^Output 3"/>
+				<Link VarA="PlcTask Outputs^IN_OUT._o_b_valve4" VarB="DIG Outputs^Output 4"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
 </TcSmProject>
